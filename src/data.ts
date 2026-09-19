@@ -8,7 +8,7 @@ export const personalData = {
   resume: '/Aditya_Verma_resume.pdf',
   roles: ['Software Engineer', 'Data Pipeline Engineer', 'AI Systems Builder', 'Full-Stack Developer'],
   tagline:
-    'I build data platforms that move regulatory filings for 5,000+ banks, and AI systems that know when not to call an LLM.',
+    'I build backend systems that handle regulatory data for 5,000+ banks, and AI systems that turn scattered enterprise signals into decisions.',
   socials: {
     linkedin: 'https://www.linkedin.com/in/-aditya-verma-/',
     github: 'https://github.com/addy-301',
