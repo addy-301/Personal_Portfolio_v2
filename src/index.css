@@ -1,0 +1,441 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-cyan: var(--cyan);
+  --color-pink: var(--pink);
+  --color-lime: var(--lime);
+  --color-violet: var(--violet);
+  --color-amber: var(--amber);
+  --font-sans: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  color-scheme: light;
+  --bg: #f6f4ff;
+  --bg-2: #ece8ff;
+  --ink: #120d2b;
+  --muted: #4f4870;
+  --line: rgb(18 13 43 / 0.12);
+  --surface: rgb(255 255 255 / 0.72);
+  --cyan: #0e7fa3;
+  --pink: #d61f7c;
+  --lime: #4b7a0c;
+  --violet: #6b2ee6;
+  --amber: #b45309;
+  --glow-a: #38e1ff;
+  --glow-b: #ff4fb4;
+  --glow-c: #9d6bff;
+  --glow-alpha: 0.35;
+  --grid: rgb(107 46 230 / 0.16);
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #06040f;
+  --bg-2: #0e0a22;
+  --ink: #f4f2ff;
+  --muted: #a8a3c7;
+  --line: rgb(255 255 255 / 0.1);
+  --surface: rgb(255 255 255 / 0.035);
+  --cyan: #22e4ff;
+  --pink: #ff3da8;
+  --lime: #b6ff3b;
+  --violet: #9b6bff;
+  --amber: #ffc53d;
+  --glow-a: #00d9ff;
+  --glow-b: #ff2e9f;
+  --glow-c: #7c3aff;
+  --glow-alpha: 0.28;
+  --grid: rgb(34 228 255 / 0.18);
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  /* Sections carry their own top padding (≥ nav height), so anchors land flush. */
+  scroll-padding-top: 0;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Land nav targets with the heading just below the floating nav, not the section's empty padding. */
+main > section[id]:not(#top) { scroll-margin-top: 0.5rem; }
+@media (min-width: 768px) {
+  main > section[id]:not(#top) { scroll-margin-top: -0.5rem; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--pink);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--cyan), var(--violet), var(--pink));
+  border-radius: 10px;
+  border: 3px solid var(--bg);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 600;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Ambient background ---------- */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+.aurora span {
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  opacity: var(--glow-alpha);
+  will-change: transform;
+}
+.aurora span:nth-child(1) {
+  top: -25vmax; left: -15vmax;
+  background: radial-gradient(closest-side, var(--glow-a), transparent);
+  animation: drift-a 26s ease-in-out infinite alternate;
+}
+.aurora span:nth-child(2) {
+  top: -10vmax; right: -25vmax;
+  background: radial-gradient(closest-side, var(--glow-b), transparent);
+  animation: drift-b 32s ease-in-out infinite alternate;
+}
+.aurora span:nth-child(3) {
+  bottom: -35vmax; left: 15vmax;
+  background: radial-gradient(closest-side, var(--glow-c), transparent);
+  animation: drift-c 38s ease-in-out infinite alternate;
+}
+.aurora::after {
+  /* faint dot matrix */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+}
+@keyframes drift-a { to { transform: translate3d(18vmax, 12vmax, 0) scale(1.15); } }
+@keyframes drift-b { to { transform: translate3d(-20vmax, 18vmax, 0) scale(0.9); } }
+@keyframes drift-c { to { transform: translate3d(12vmax, -16vmax, 0) scale(1.1); } }
+
+/* Synthwave floor under the hero */
+.floor {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 55%;
+  perspective: 420px;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(to top, black 10%, transparent 90%);
+}
+.floor::before {
+  content: "";
+  position: absolute;
+  inset: -100% 0 0 0;
+  transform-origin: 50% 100%;
+  transform: rotateX(62deg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: floor 3.2s linear infinite;
+  will-change: transform;
+}
+@keyframes floor {
+  from { transform: rotateX(62deg) translate3d(0, 0, 0); }
+  to { transform: rotateX(62deg) translate3d(0, 56px, 0); }
+}
+
+/* ---------- Type & text effects ---------- */
+.text-chroma {
+  background: linear-gradient(100deg, var(--cyan) 0%, var(--violet) 35%, var(--pink) 65%, var(--amber) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: chroma 9s ease-in-out infinite alternate;
+}
+@keyframes chroma { to { background-position: 100% 0; } }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  margin-left: 0.15ch;
+  vertical-align: -0.12em;
+  background: var(--pink);
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Surfaces ---------- */
+.panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+/* Cursor-tracked neon edge, driven by --mx/--my (set in fx.ts) */
+[data-spot] { --mx: 50%; --my: 50%; --spot: 0; }
+[data-spot]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(420px circle at var(--mx) var(--my), var(--cyan), var(--pink) 40%, transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: var(--spot);
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+[data-spot]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(500px circle at var(--mx) var(--my), color-mix(in srgb, var(--violet) 12%, transparent), transparent 60%);
+  opacity: var(--spot);
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.chip:hover {
+  color: var(--ink);
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(110deg, #0891b2, #7c3aed 45%, #db2777);
+  box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--pink) 60%, transparent);
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s;
+}
+.btn-primary:hover::after { transform: translateX(120%); }
+.btn-primary:hover { box-shadow: 0 14px 40px -10px color-mix(in srgb, var(--cyan) 70%, transparent); }
+
+.btn-ghost {
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+}
+.btn-ghost:hover { border-color: var(--cyan); }
+
+/* ---------- Reveal on scroll (only when JS is running) ---------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 0.8s cubic-bezier(.2,.8,.2,1), transform 0.8s cubic-bezier(.2,.8,.2,1);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+/* Above-the-fold entrance: CSS-only so it never waits on JS (protects LCP). */
+.rise {
+  animation: rise 0.9s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: calc(var(--d, 0) * 80ms);
+}
+@keyframes rise { from { opacity: 0; transform: translate3d(0, 24px, 0); } }
+
+/* Safety net: if the bundle never boots, show everything anyway. */
+.js:not(.fx-ready) [data-reveal] { animation: reveal-fallback 0.6s 3.5s forwards; }
+@keyframes reveal-fallback { to { opacity: 1; transform: none; } }
+
+/* Bars that fill when revealed */
+.bar {
+  transform-origin: left;
+  transform: scaleX(var(--w, 1));
+  transition: transform 1.4s cubic-bezier(.2,.8,.2,1) 0.2s;
+}
+.js [data-reveal]:not(.is-in) .bar { transform: scaleX(0); }
+
+/* ---------- Hero HUD ---------- */
+.hud-line {
+  opacity: 0;
+  animation: hud-in 9s infinite;
+  animation-delay: calc(var(--i) * 0.7s);
+}
+@keyframes hud-in {
+  0% { opacity: 0; transform: translateX(-6px); }
+  4%, 88% { opacity: 1; transform: none; }
+  96%, 100% { opacity: 0; }
+}
+.hud-fill {
+  transform-origin: left;
+  animation: hud-fill 9s cubic-bezier(.3,.7,.2,1) infinite;
+}
+@keyframes hud-fill {
+  0% { transform: scaleX(0.02); }
+  55%, 88% { transform: scaleX(1); }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+.scanline {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--cyan) 14%, transparent), transparent);
+  height: 30%;
+  animation: scan 5s linear infinite;
+}
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(340%); }
+}
+
+.pulse-dot { position: relative; }
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite;
+}
+@keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+
+/* Flowing dashes on the AI gate diagram */
+.flow { stroke-dasharray: 4 7; animation: flow 1.2s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -22; } }
+
+/* ---------- Marquee ---------- */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.marquee > div {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1rem;
+  padding-right: 1rem;
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover > div { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-100%); } }
+
+/* ---------- Scroll progress (scroll-driven, no JS) ---------- */
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 60;
+  transform-origin: left;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--cyan), var(--violet), var(--pink), var(--amber));
+}
+@supports (animation-timeline: scroll()) {
+  .progress { animation: progress linear both; animation-timeline: scroll(root); }
+  @keyframes progress { to { transform: scaleX(1); } }
+}
+
+/* ---------- Accessibility: calm everything down ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .hud-line { opacity: 1; }
+  .js [data-reveal] { opacity: 1; transform: none; }
+}
