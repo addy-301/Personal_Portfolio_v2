@@ -25,7 +25,7 @@ export default function Contact() {
           Let’s build something <span className="text-chroma">remarkable</span>.
         </h2>
         <p className="relative mx-auto mt-6 max-w-xl text-lg text-muted">
-          Based in Mumbai. Always up for conversations about data platforms, applied AI and hard engineering problems.
+          Based in Mumbai, India. Open to discussing engineering challenges, AI innovations, and new opportunities to be part of your visions.
         </p>
 
         <div className="relative mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">

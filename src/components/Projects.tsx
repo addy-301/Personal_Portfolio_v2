@@ -104,7 +104,7 @@ export default function Projects() {
   return (
     <Section id="projects">
       <SectionHeading id="projects" index="03" label="Projects" title={<>Things I’ve <span className="text-chroma">built</span>.</>}>
-        From a national-final AI copilot to reinforcement-learning agents.
+        Systems that turn data into decisions, from AI copilots to real-time apps.
       </SectionHeading>
 
       <div className="grid gap-6">

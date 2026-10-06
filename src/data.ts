@@ -6,9 +6,9 @@ export const personalData = {
   location: 'Mumbai, Maharashtra, India',
   email: 'vaditya832@gmail.com',
   resume: '/Aditya_Verma_resume.pdf',
-  roles: ['Software Engineer', 'Data Pipeline Engineer', 'AI Systems Builder', 'Full-Stack Developer'],
+  roles: ['Software Engineer', 'Data Engineer', 'AI Systems Builder', 'Full-Stack Developer'],
   tagline:
-    'I build backend systems that handle regulatory data for 5,000+ banks, and AI systems that turn scattered enterprise signals into decisions.',
+    'I build reliable, scalable software and AI-powered systems, from backend services to intelligent products people actually use.',
   socials: {
     linkedin: 'https://www.linkedin.com/in/-aditya-verma-/',
     github: 'https://github.com/addy-301',
@@ -28,11 +28,11 @@ export const personalData = {
       company: 'Tata Consultancy Services',
       client: 'Reserve Bank of India · CIMS',
       location: 'Mumbai, Maharashtra',
-      period: 'Nov 2025 — Present',
+      period: 'Nov 2025 - Present',
       highlights: [
         'Engineered backend Python and PySpark services for the Reserve Bank of India’s CIMS modernization, migrating 230+ regulatory returns from a report-based repository to an element-based architecture spanning 50,000+ elements and serving filings from 5,000+ banks and financial institutions.',
         'Cut end-to-end batch runtime from 60 to 15 minutes by re-tuning PySpark resource allocation and refactoring execution logic, raising per-run throughput from ~50 to 200+ elements while eliminating timeouts.',
-        'Built dual ingestion flows — direct element-based collection and report-to-element conversion — with dimension-mapping logic that guarantees lossless transformation across bulk historical migration and daily batches of 20,000–100,000+ rows.',
+        'Built dual ingestion flows, direct element-based collection and report-to-element conversion, with dimension-mapping logic that guarantees lossless transformation across bulk historical migration and daily batches of 20,000–100,000+ rows.',
         'Designed automated validation and sanity-check routines gating every environment promotion, catching defects pre-release and driving 20 returns to live production for active bank filing.',
         'Lead a team of 3 engineers in an Agile environment, coordinating with cross-functional teams on requirements, defect triage and release readiness.',
       ],
@@ -49,7 +49,7 @@ export const personalData = {
       points: [
         'Three role-scoped surfaces (AE, RevOps, VP/CRO) over one shared signal pipeline.',
         'Deterministic, real-time risk scoring with per-signal attribution + XGBoost forecasting.',
-        'Gated RAG layer (GPT-4o-mini, Claude Sonnet 4.6): LLM only when genuinely needed — lower token spend, grounded output.',
+        'Gated RAG layer (GPT-4o-mini, Claude Sonnet 4.6): LLM only when genuinely needed, lower token spend, grounded output.',
         'Human-in-the-loop by design. Shipped production-grade in 5 days.',
       ],
       tech: ['Python', 'React', 'PostgreSQL', 'XGBoost', 'RAG', 'Kafka', 'Redis'],
@@ -59,9 +59,9 @@ export const personalData = {
     },
     {
       title: 'Self-Driving Car Agent',
-      kicker: 'Reinforcement Learning · Sep — Dec 2023',
+      kicker: 'Reinforcement Learning · Sep - Dec 2023',
       description:
-        'An autonomous driving agent in Unity3D with ML-Agents — custom track, vehicle control, sensors and reward shaping in C#, trained end-to-end.',
+        'An autonomous driving agent in Unity3D with ML-Agents, custom track, vehicle control, sensors and reward shaping in C#, trained end-to-end.',
       points: [
         'Benchmarked PPO vs SAC over 800k steps.',
         'SAC hit ~50% higher reward (144 vs 94); PPO matched policy in 33 min vs SAC’s 2.5 h.',
@@ -105,12 +105,12 @@ export const personalData = {
 
   achievements: [
     {
-      title: 'TCS AI Hackathon — National Finalist',
+      title: 'TCS AI Hackathon - National Finalist',
       body: 'One of 32 teams to reach the National Finals from 22,000+ participants after winning the Mumbai Regional Finals. Shipped a production-grade AI app in 5 days and presented to TCS leadership, including the CIO.',
       tag: 'Top 32 · 22k+',
     },
     {
-      title: 'Innovation Superstar Award — TCS',
+      title: 'Innovation Superstar Award - TCS',
       body: 'Recognized by project leadership for sustained performance, and as the only engineer from the business unit to win the Mumbai Regional Finals.',
       tag: 'Award',
     },
@@ -131,8 +131,8 @@ export const personalData = {
   education: {
     degree: 'B.Tech, Computer Science & Engineering',
     institute: 'Graphic Era University, Dehradun',
-    period: '2021 — 2025',
-    score: 'CGPA 8.32',
+    period: '2021 - 2025'
+    // score: 'CGPA 8.32',
   },
 };
 

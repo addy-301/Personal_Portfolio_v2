@@ -37,7 +37,7 @@ export function initFx() {
   );
   document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 
-  // Cursor spotlight on cards — fine pointers only, rAF-throttled.
+  // Cursor spotlight on cards - fine pointers only, rAF-throttled.
   let frame = 0;
   let active: HTMLElement | null = null;
   const onMove = (e: PointerEvent) => {

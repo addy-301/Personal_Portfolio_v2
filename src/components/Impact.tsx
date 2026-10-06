@@ -8,7 +8,7 @@ export default function Impact() {
   return (
     <Section id="impact">
       <SectionHeading id="impact" index="01" label="Impact" title={<>Numbers from <span className="text-chroma">production</span>, not prototypes.</>}>
-        Backend and data engineering for the Reserve Bank of India’s CIMS modernization — the platform banks across India use to file regulatory returns.
+        Backend and data engineering for the Reserve Bank of India’s CIMS modernization - the platform banks across India use to file regulatory returns.
       </SectionHeading>
 
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

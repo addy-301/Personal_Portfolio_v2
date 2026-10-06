@@ -89,7 +89,7 @@ export default function Nav() {
         }`}
       >
         <div className="flex items-center gap-3">
-          <a href="#top" className="group flex items-center gap-2 font-bold" aria-label="Aditya Verma — back to top">
+          <a href="#top" className="group flex items-center gap-2 font-bold" aria-label="Aditya Verma - back to top">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-cyan via-violet to-pink text-sm text-white transition-transform duration-500 group-hover:rotate-[360deg]">
               AV
             </span>

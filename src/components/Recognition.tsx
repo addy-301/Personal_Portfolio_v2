@@ -81,7 +81,7 @@ export default function Recognition() {
             <p className="mt-1 text-muted">{education.institute}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="chip">{education.period}</span>
-              <span className="chip !border-lime/40 !text-lime">{education.score}</span>
+              {/* <span className="chip !border-lime/40 !text-lime">{education.score}</span> */}
             </div>
           </div>
         </div>
